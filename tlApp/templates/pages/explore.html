@@ -1,0 +1,29 @@
+{% extends '../base.html' %}
+
+{% block title %}Explore{% endblock %}
+
+{% block content %}
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-primary pt-2 pb-2">Explore</h1>
+                        <hr >
+                        {% for post in posts %}
+                        <div class="my-3 p-3 bg-body rounded shadow-sm">
+                            <div class="d-flex text-muted pt-3">
+                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle" style="margin-right: 10px;">
+                                <p class="pb-3 mb-0 small lh-sm">
+                                    <strong class="d-block text-primary">@{{post.userPost.username}}</strong>
+                                    {{ post.content|truncatechars:140 }}
+                                </p>
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">Posted: <b>{{ post.postDate|date:"d.m.Y | h:m" }}</b></small>
+                            </div>
+                            <a href="{{ post.get_absolute_url }}" class="btn btn-primary btn-sm mb-3">Details</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends '../base.html' %}
+
+{% block title %}Explore{% endblock %}
+
+{% block content %}
+<div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-primary pt-2 pb-2">Post detail</h1>
+                        <hr >
+                        <div class="card">
+                            <div class="rounded shadow-sm p-3">
+                                <div class="mb-3">
+                                    <h6 class="text-primary"><img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle mt-2 mb-2"> @{{post.userPost.username}}</h6>
+                                    <small class="text-muted">Posted: <b>{{ post.postDate|date:"d.m.Y | h:m" }}</b></small>
+                                </div>
+                                <p class="content">{{ post.content }}</p>
+                                <a href="{% url 'deletePost' pk=post.pk  %}" class="btn btn-danger">Remove Post</a>
+                                <a href="{% url 'postEdit' pk=post.pk  %}" class="btn btn-success">Edit Post</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+{% endblock %}
